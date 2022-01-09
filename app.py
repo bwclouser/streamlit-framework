@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from bokeh.plotting import figure,output_file,show
@@ -16,5 +17,9 @@ data = r.json()
 
 df = pd.DataFrame.from_dict(data, orient = 'index')
 
-p = figure()
-show(p)
+#p = figure()
+#show(p)
+
+fig = plt.figure()
+plt.title=user_input + ' Price'
+st.pyplot(fig)
