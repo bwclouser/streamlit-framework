@@ -3,4 +3,4 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    HttpResponse('<pre>'+'PotatoPotato'+'<\pre>')
+    return HttpResponse('<pre>'+'PotatoPotato'+'<\pre>')
