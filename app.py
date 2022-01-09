@@ -1,3 +1,6 @@
 import requests
+from django.shortcuts import render
+from django.http import HttpResponse
 
-print('PotatoPotato')
+def index(request):
+    HttpResponse('<pre>'+'PotatoPotato'+'<\pre>')
