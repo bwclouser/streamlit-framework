@@ -3,4 +3,3 @@ streamlit
 python-dotenv
 bokeh==2.4.1
 requests
-os
