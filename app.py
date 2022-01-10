@@ -6,10 +6,11 @@ import pandas as pd
 from bokeh.plotting import figure,output_file,show
 from bokeh.models import DatetimeTickFormatter
 from datetime import datetime
+from datetime import timedelta
 
-st.title("Test Program")
+st.title("Milestone Project -- Stock Prices")
 
-st.sidebar.markdown('## Ticker Symbol')
+#st.sidebar.markdown('## Ticker Symbol')
 
 user_input = st.sidebar.text_input("Ticker Symbol", 'GOOG')
 
@@ -22,9 +23,14 @@ data = r.json()
 dict=data['Time Series (60min)']
 
 times=dict.keys()
-dtime=[datetime.strptime(time, '%Y-%m-%d %H:%M:%S') for time in times]
+dtime=np.array([datetime.strptime(time, '%Y-%m-%d %H:%M:%S') for time in times])
 
-closes=[float(val['4. close']) for val in dict.values()]
+closes=np.array([float(val['4. close']) for val in dict.values()])
+
+truth=dtime>dtime[0]-timedelta(days=31)
+
+dtime=dtime[truth]
+closes=closes[truth]
 
 print(dtime[0],closes[0])
 
