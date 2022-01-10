@@ -7,6 +7,7 @@ from bokeh.plotting import figure,output_file,show
 from bokeh.models import DatetimeTickFormatter
 from datetime import datetime
 from datetime import timedelta
+import os
 
 st.title("Milestone Project -- Stock Prices")
 
@@ -14,7 +15,10 @@ st.title("Milestone Project -- Stock Prices")
 
 user_input = st.sidebar.text_input("Ticker Symbol", 'GOOG')
 
-url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol='+user_input+'&interval=60min&outputsize=full&apikey=EGO54BOG5AMJTV2H'
+apikey = os.environ.get('APIKEY')
+#print(apikey)
+
+url = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol='+user_input+'&interval=60min&outputsize=full&apikey='+apikey
 r = requests.get(url)
 data = r.json()
 
