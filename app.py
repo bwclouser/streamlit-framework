@@ -1,8 +1,6 @@
 import streamlit as st
 import requests
-import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
 from bokeh.plotting import figure,output_file,show
 from bokeh.models import DatetimeTickFormatter
 from datetime import datetime
